@@ -2,13 +2,17 @@
 
 import NotificationItem from '@/components/NotificationItem'
 import notifications from '@/data'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Home() {
 	const [messages, setMessages] = useState<NotificationMessage[]>(notifications)
 	const [areAllRead, setAreAllRead] = useState(
 		messages.every((message) => message.isRead)
 	)
+
+	useEffect(() => {
+		setAreAllRead(messages.every((message) => message.isRead))
+	}, [messages])
 
 	const handleNotificationClick = (id: number): void => {
 		setMessages((prev) =>
