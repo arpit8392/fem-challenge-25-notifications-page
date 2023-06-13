@@ -8,4 +8,5 @@ type NotificationMessage = {
 	privateMessage?: string
     activityByImage: string
     activityImage?: string
+	isRead: boolean
 }

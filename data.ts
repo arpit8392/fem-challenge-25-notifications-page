@@ -7,6 +7,7 @@ const notifications: NotificationMessage[] = [
 		elapsedTime: '1m ago',
 		hasPrivateMessage: false,
 		activityByImage: 'avatar-mark-webber.webp',
+		isRead: false,
 	},
 	{
 		id: 2,
@@ -15,6 +16,7 @@ const notifications: NotificationMessage[] = [
 		elapsedTime: '5m ago',
 		hasPrivateMessage: false,
 		activityByImage: 'avatar-angela-gray.webp',
+		isRead: false,
 	},
 	{
 		id: 3,
@@ -24,6 +26,7 @@ const notifications: NotificationMessage[] = [
 		elapsedTime: '1 day ago',
 		hasPrivateMessage: false,
 		activityByImage: 'avatar-jacob-thompson.webp',
+		isRead: false,
 	},
 	{
 		id: 4,
@@ -34,6 +37,7 @@ const notifications: NotificationMessage[] = [
 		privateMessage:
 			"Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm already having lots of fun and improving my game.",
 		activityByImage: 'avatar-rizky-hasanuddin.webp',
+		isRead: true,
 	},
 	{
 		id: 5,
@@ -43,6 +47,7 @@ const notifications: NotificationMessage[] = [
 		hasPrivateMessage: false,
 		activityByImage: 'avatar-kimberly-smith.webp',
 		activityImage: 'image-chess.webp',
+		isRead: true,
 	},
 	{
 		id: 6,
@@ -53,6 +58,7 @@ const notifications: NotificationMessage[] = [
 		elapsedTime: '2 weeks ago',
 		hasPrivateMessage: false,
 		activityByImage: 'avatar-nathan-peterson.webp',
+		isRead: true,
 	},
 	{
 		id: 7,
@@ -62,6 +68,7 @@ const notifications: NotificationMessage[] = [
 		elapsedTime: '2 weeks ago',
 		hasPrivateMessage: false,
 		activityByImage: 'avatar-anna-kim.webp',
+		isRead: true,
 	},
 ]
 

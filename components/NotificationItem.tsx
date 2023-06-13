@@ -1,17 +1,15 @@
-'use client'
-
 import Image from 'next/image'
-import { useState } from 'react'
 
 const classNames = (...classes: Array<string>): string => {
 	return classes.filter(Boolean).join(' ')
 }
 
-const NotificationItem = (message: NotificationMessage) => {
-	const [read, setRead] = useState(false)
+type Props = {
+	message: NotificationMessage
+	clickHandler: (event: React.MouseEvent<HTMLLIElement>) => void
+}
 
-	const toggle = () => setRead(!read)
-
+const NotificationItem = ({ message, clickHandler }: Props) => {
 	const {
 		activityBy,
 		activity,
@@ -21,14 +19,15 @@ const NotificationItem = (message: NotificationMessage) => {
 		privateMessage,
 		activityByImage,
 		activityImage,
+		isRead,
 	} = message
 
 	return (
 		<li
-			onClick={toggle}
+			onClick={clickHandler}
 			className={classNames(
 				'flex items-center gap-3 p-4 hover:cursor-pointer md:gap-5 md:p-5',
-				!read ? 'rounded-lg bg-veryLightGrayishBlue' : 'bg-inherit'
+				!isRead ? 'rounded-lg bg-veryLightGrayishBlue' : 'bg-inherit'
 			)}>
 			<div className='relative h-10 w-10 self-start rounded-full md:h-12 md:w-12'>
 				<Image
@@ -49,7 +48,7 @@ const NotificationItem = (message: NotificationMessage) => {
 							{activityAdditionalDetails}
 						</span>
 					)}
-					{!read && (
+					{!isRead && (
 						<span className='mx-[6px] inline-block h-2 w-2 rounded-full bg-red'></span>
 					)}
 				</p>
