@@ -2,17 +2,12 @@
 
 import NotificationItem from '@/components/NotificationItem'
 import notifications from '@/data'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 export default function Home() {
 	const [messages, setMessages] = useState<NotificationMessage[]>(notifications)
-	const [areAllRead, setAreAllRead] = useState(
-		messages.every((message) => message.isRead)
-	)
 
-	useEffect(() => {
-		setAreAllRead(messages.every((message) => message.isRead))
-	}, [messages])
+	const areAllRead = messages.every((message) => message.isRead)
 
 	const handleNotificationClick = (id: number): void => {
 		setMessages((prev) =>
@@ -29,19 +24,19 @@ export default function Home() {
 		setMessages((prev) =>
 			prev.map((notification) => ({ ...notification, isRead: true }))
 		)
-		setAreAllRead(true)
 	}
 
 	const handleMarkAllAsUnread = () => {
 		setMessages((prev) =>
 			prev.map((notification) => ({ ...notification, isRead: false }))
 		)
-		setAreAllRead(false)
 	}
 
 	const unreadCount = messages.filter(
 		(notification) => !notification.isRead
 	).length
+
+	console.log('rendered')
 
 	return (
 		<main className='mx-auto flex max-w-3xl flex-col gap-6 rounded-2xl bg-white px-4 py-6 md:gap-8 md:p-8'>
