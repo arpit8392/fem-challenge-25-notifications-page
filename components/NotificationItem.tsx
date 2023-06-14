@@ -1,12 +1,9 @@
+import clsx from 'clsx'
 import Image from 'next/image'
-
-const classNames = (...classes: Array<string>): string => {
-	return classes.filter(Boolean).join(' ')
-}
 
 type Props = {
 	message: NotificationMessage
-	clickHandler: (event: React.MouseEvent<HTMLLIElement>) => void
+	clickHandler: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 const NotificationItem = ({ message, clickHandler }: Props) => {
@@ -23,14 +20,14 @@ const NotificationItem = ({ message, clickHandler }: Props) => {
 	} = message
 
 	return (
-		<li
+		<button
 			onClick={clickHandler}
-			className={classNames(
-				'flex justify-between p-4 hover:cursor-pointer md:p-5',
+			className={clsx(
+				'flex w-full justify-between p-4 text-left hover:cursor-pointer md:p-5',
 				!isRead ? 'rounded-lg bg-veryLightGrayishBlue' : 'bg-inherit'
 			)}>
 			<div className='flex gap-3 md:gap-5 '>
-				<div className='relative h-10 w-10 self-start rounded-full md:h-12 md:w-12 shrink-0'>
+				<div className='relative h-10 w-10 shrink-0 self-start rounded-full md:h-12 md:w-12'>
 					<Image
 						src={`/images/${activityByImage}`}
 						alt={activityBy}
@@ -39,7 +36,7 @@ const NotificationItem = ({ message, clickHandler }: Props) => {
 					/>
 				</div>
 				<div className='flex flex-col gap-[3px]'>
-					<p className='max-w-xs text-sm text-darkGrayishBlue md:max-w-none md:text-base'>
+					<h2 className='max-w-xs text-sm text-darkGrayishBlue md:max-w-none md:text-base'>
 						<span className='font-extrabold text-veryDarkBlue hover:cursor-pointer hover:text-blue'>
 							{activityBy}
 						</span>{' '}
@@ -52,7 +49,7 @@ const NotificationItem = ({ message, clickHandler }: Props) => {
 						{!isRead && (
 							<span className='mx-[6px] inline-block h-2 w-2 rounded-full bg-red'></span>
 						)}
-					</p>
+					</h2>
 
 					<p className='text-sm text-grayishBlue md:text-base'>{elapsedTime}</p>
 
@@ -74,7 +71,7 @@ const NotificationItem = ({ message, clickHandler }: Props) => {
 					/>
 				</div>
 			)}
-		</li>
+		</button>
 	)
 }
 export default NotificationItem

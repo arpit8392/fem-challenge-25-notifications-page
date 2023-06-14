@@ -58,11 +58,12 @@ export default function Home() {
 
 			<ul className='flex flex-col gap-2 md:gap-3'>
 				{messages.map((item) => (
-					<NotificationItem
-						key={item.id}
-						message={item}
-						clickHandler={() => handleNotificationClick(item.id)}
-					/>
+					<li key={item.id}>
+						<NotificationItem
+							message={item}
+							clickHandler={() => handleNotificationClick(item.id)}
+						/>
+					</li>
 				))}
 			</ul>
 		</main>
